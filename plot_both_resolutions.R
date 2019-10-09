@@ -6,29 +6,29 @@
 # Aim    : 
 # URL    : This plot a layout [1 , 2 , 3]
 #=============================================================================#
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_age.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_area.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_bathy.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_behavior.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_day.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_depth.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_temp.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_year.R')
-source('F:/GitHub/ichthyop_analysis/R/source/recruitment_zone.R')
+source('source/recruitment_age.R')
+source('source/recruitment_area.R')
+source('source/recruitment_bathy.R')
+source('source/recruitment_behavior.R')
+source('source/recruitment_day.R')
+source('source/recruitment_depth.R')
+source('source/recruitment_temp.R')
+source('source/recruitment_year.R')
+source('source/recruitment_zone.R')
 
-out_path <- 'F:/ich_results_resolution/'
+file1 <- 'E:/ICHTHYOP/peru02km/ichthyopPeru/out/results/ichthyop_output.csv'
+file2 <- 'D:/ICHTHYOP/peru10km/ichthyopPeru/out/results/ichthyop_output.csv'
+PNG <- paste0('C:/Users/jflores/Desktop/ichthyopPeru.png')
 
-res01 <- read.table(paste0(out_path, '02km/perubathy/ichthyop_output.csv'), sep=';', header = T)
-res02 <- read.table(paste0(out_path, '10km/perubathy/ichthyop_output.csv'), sep=';', header = T)
+res01 <- read.table(file1, sep=';', header = T)
+res02 <- read.table(file2, sep=';', header = T)
 
 legend_text = c('02 km', '10 km')
-PNG <- paste0(out_path, 'peru_resolution_bathy.png')
-
 ymax = 55
 ylab = 'Local Retention (%)'
-
 col_bars <- c('grey20','grey80')
 legpos <- 'top'
+
 #--------------- Don't change anything after here ---------------#
 meses = c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
