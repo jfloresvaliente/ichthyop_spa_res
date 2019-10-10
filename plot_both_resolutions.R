@@ -15,16 +15,20 @@ source('source/recruitment_depth.R')
 source('source/recruitment_temp.R')
 source('source/recruitment_year.R')
 source('source/recruitment_zone.R')
+source('source/recruitment_eps.R')
 
-file1 <- 'E:/ICHTHYOP/peru02km/ichthyopPeru/out/results/ichthyop_output.csv'
-file2 <- 'D:/ICHTHYOP/peru10km/ichthyopPeru/out/results/ichthyop_output.csv'
-PNG <- paste0('C:/Users/jflores/Desktop/ichthyopPeru.png')
+file1 <- 'E:/ICHTHYOP/peru02km/ichthyopPeruBathy/out/results/ichthyop_output.csv'
+file2 <- 'D:/ICHTHYOP/peru10km/ichthyopPeruBathy/out/results/ichthyop_output.csv'
+PNG <- paste0('C:/Users/jflores/Desktop/ichthyopPeruBathy.png')
 
 res01 <- read.table(file1, sep=';', header = T)
+# res01 <- subset(res01, res01$Eps == 1e-09)
+
 res02 <- read.table(file2, sep=';', header = T)
+# res02 <- subset(res02, res02$Eps == 1e-09)
 
 legend_text = c('02 km', '10 km')
-ymax = 55
+ymax = 65
 ylab = 'Local Retention (%)'
 col_bars <- c('grey20','grey80')
 legpos <- 'top'
@@ -43,6 +47,7 @@ res01_datadepth     <- recruitment_depth(res01)
 res01_datatemp      <- recruitment_temp(res01)
 res01_datayear      <- recruitment_year(res01)
 res01_datazone      <- recruitment_zone(res01)
+res01_dataeps       <- recruitment_eps(res01)
 
 # Grupo de datos 2
 res02_dataage       <- recruitment_age(res02)
@@ -54,6 +59,7 @@ res02_datadepth     <- recruitment_depth(res02)
 res02_datatemp      <- recruitment_temp(res02)
 res02_datayear      <- recruitment_year(res02)
 res02_datazone      <- recruitment_zone(res02)
+res02_dataeps       <- recruitment_eps(res02)
 
 # DATA AGE ----------------------------------------------------------------
 agemean      <- cbind(res01_dataage[,1],res02_dataage[,1]); rownames(agemean) <- rownames(res01_dataage)
@@ -99,7 +105,6 @@ yearemax      <- cbind(res01_datayear[,3],res02_datayear[,3])
 zonemean      <- cbind(res01_datazone[,1],res02_datazone[,1]); rownames(zonemean) <- rownames(res01_datazone)
 zoneemin      <- cbind(res01_datazone[,2],res02_datazone[,2])
 zoneemax      <- cbind(res01_datazone[,3],res02_datazone[,3])
-
 
 # MAKE PLOTS --------------------------------------------------------------
 png(PNG, width = 1050, height = 1050, res=120)
